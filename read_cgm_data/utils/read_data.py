@@ -65,18 +65,21 @@ def read_data(filename,date_col=1,glucose_col=2,
         glucose (mg/dL) as values in a column
     """
     dtf = datetime_format_generator()
+
     try:
         if header_ != 0:
             skip_rows = panda_row_conversion(header_,skip_rows)
             header_=0
+            st.write(header_,skip_rows)
         
-        data = pd.read_csv(filename,header=header_,skiprows=skip_rows-1)
+        data = pd.read_csv(filename,header=header_).iloc[skip_rows-1:]
     except:
         data = read_io_data(filename.read(),skip_rows=skip_rows,header_= header_)
     columns = list(data.columns)
     cols = [columns[date_col],columns[glucose_col]]
     data = data.loc[:,cols]
     data.columns = ['datetime','glucose']
+    
     try:
         data['datetime']=pd.to_datetime(data['datetime'])
     except:
@@ -116,7 +119,7 @@ def read_io_data(filename,header_=0,skip_rows=1):
     """
 
     try:
-        infile = StringIO(filename.decode("utf-8"))
+        infile = StringIO(filename.decode("utf-8-sig"))
     except:
         with open(filename,'r') as f:
             infile = StringIO(f.read()).read().split('\n')
@@ -126,6 +129,12 @@ def read_io_data(filename,header_=0,skip_rows=1):
     lst_data = []
     for line in infile:
         row = line.split(",")
+        try:
+            row[i]=row[i].replace('"','')
+            if row[i] == '':
+                row[i]=np.nan
+        except:
+            pass
         for i in range(len(row)):
             try:
                 ## Integer
@@ -136,12 +145,7 @@ def read_io_data(filename,header_=0,skip_rows=1):
                     row[i]=float(row[i])
                 except:
                     ## String, not a blank one though
-                    try:
-                        row[i]=row[i].replace('"','')
-                        if row[i] == '':
-                            row[i]=np.nan
-                    except:
-                        pass
+                    pass
         lst_data.append(row)
     data = {}
     header = lst_data[header_]
@@ -152,7 +156,8 @@ def read_io_data(filename,header_=0,skip_rows=1):
             for i, col in enumerate(line[:len(header)]):
                 data[header[i]].append(col)
     try:
-        data = pd.DataFrame(data)
+        data = pd.DataFrame.from_dict(data,orient='index')
+        data = data.T
     except:
         pass
     return data
@@ -164,7 +169,7 @@ def raw_data_datetime(iofile, date_col = 1, skip_rows = 1,header=0):
     datetime_fmts = datetime_format_generator()
     
     try:
-        infile = StringIO(iofile.decode("utf-8"))
+        infile = StringIO(iofile.decode("utf-8-sig"))
     except:
         with open(iofile,'r') as f:
             infile = StringIO(f.read()).read().split('\n')
@@ -188,40 +193,49 @@ def view_raw_data(iofile,skip_rows = 1,header_ = 0,stop_=None):
      
     """
     try:
-        infile = StringIO(iofile.decode("utf-8"))
+        infile = StringIO(iofile.decode("utf-8-sig"))
     except:
-        with open(iofile,'r') as f:
+        with open(iofile,'r',encoding='utf-8',errors='ignore') as f:
             infile = StringIO(f.read()).read().split('\n')
     #str_data = ""
     lst_data = []
     for j,line in enumerate(infile):
         #str_data += 'row '+str(j)+' '+line +"\n"
         row = line.split(",")
+
         for i in range(len(row)):
+            try:
+                row[i]=row[i].replace('"','')
+            except:
+                pass
             try:
                 row[i]=int(row[i])
             except:
                 try:
                     row[i]=float(row[i])
                 except:
-                    try:
-                        row[i]=row[i].replace('"','')
-                    except:
-                        pass
+                    pass
 
         lst_data.append(row)
         if j == stop_:
             break
+    
+
     data = {}
     header = lst_data[header_]
+
+
     for i in range(len(header)):
         data[header[i]]=[]
     for line in lst_data[header_+skip_rows:]:
-        if len(line)==len(header):
-            for i, col in enumerate(line[:len(header)]):
-                data[header[i]].append(col)
+        #if len(line)==len(header):
+        for i, col in enumerate(line[:len(header)]):
+            data[header[i]].append(col)
+    
+            
     try:
-        data = pd.DataFrame(data)
+        data = pd.DataFrame.from_dict(data,orient='index')
+        data = data.T
         ## if dataframe is empty, 
         if len(data)<2:
             raise ValueError("Run Exception and return data as list")
@@ -230,7 +244,6 @@ def view_raw_data(iofile,skip_rows = 1,header_ = 0,stop_=None):
          data.append(header)
          for l in lst_data[skip_rows:]:
             data.append(l)
-
     return data
 
 

@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import t,entropy
-#import streamlit as st
+import streamlit as st
 import collections
 
 from datetime import datetime,timedelta
@@ -56,12 +56,14 @@ class CGM(object):
             data - raw data converted to grid datetime values.
             
         """
+        st.write(file_df)
         self.params = {}
         self.filename = filename
         self.max_break = max_break
         self.date_format = dt_fmt
         self.df = file_df.dropna()
         ## get rid of the local timezone
+
         self.df.index = self.df.index.tz_localize(None)
         self.missing_values = None
         self.observations = len(self.df)
