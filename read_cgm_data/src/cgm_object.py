@@ -1214,12 +1214,16 @@ class CGM(object):
                  }
         ax4= self.ax_stats(ax4,**kwargs
                     )  
-        
+        stats = np.zeros(3)
+        st.write(stats)
         stats1 = self.calc_stat('auc',group_by='day').values.reshape(-1)
-        st.write(stats1)
-        stats1[1],stats1[0] = stats1[0],stats1[1]
-        stats2 = self.calc_stat('auc').values.reshape(-1)
-        stats = np.hstack([stats1,stats2])
+        st.write(stats1[0], stats1[1])
+        stats[0] = stats1[1]
+        stats[1] = stats1[0]
+        #stats1[1],stats1[0] = stats1[0],stats1[1]
+        stats[2] = self.calc_stat('auc').values.reshape(-1)
+        #stats = np.hstack([stats1,stats2])
+        st.write(stats)
 
         ax5 = plt.subplot2grid(fs,(4,0),rowspan=4,colspan=3)
         scols = ['auc_wake','auc_sleep','auc_all']
