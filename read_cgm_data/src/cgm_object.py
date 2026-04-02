@@ -683,7 +683,7 @@ class CGM(object):
                 self.params['type']=type_
                 ans = self.data.groupby(group_by)[columns].apply(self.stats_functions[key]['f'],
                                                 **self.params,
-                                                include_groups=True,
+                                                include_groups=False,
                                                 )
                 idx = list(ans.index)
                 data = np.stack(ans.values)
@@ -697,7 +697,7 @@ class CGM(object):
                 cols = [key]
             ans = self.data.groupby(group_by)[columns].apply(self.stats_functions[key]['f'],
                                                 **self.params,
-                                                include_groups=True,
+                                                include_groups=False,
                                                 )
             idx = list(ans.index)
             data = np.stack(ans.values)
