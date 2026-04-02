@@ -1216,6 +1216,7 @@ class CGM(object):
                     )  
         
         stats1 = self.calc_stat('auc',group_by='day').stack().values
+        st.write(stats1)
         stats1[1],stats1[0] = stats1[0],stats1[1]
         stats2 = self.calc_stat('auc').stack().values
         stats = np.hstack([stats1,stats2])
