@@ -320,7 +320,7 @@ class CGM(object):
     def episodes(self,glevel,direction = 'less',cl=1,tot_min=15):
         periods = self.periods
         event = {}
-
+        dt = self.deltat
         for period in range(len(periods)):
             df = self[period].copy()
             if direction =='less':
@@ -328,16 +328,16 @@ class CGM(object):
             else:
                 df['ineq']= df['glucose']<=glevel
             df['last'] = df.index
-            df['last'] = df.groupby('ineq')['last'].diff()-timedelta(minutes=5)
+            df['last'] = df.groupby('ineq')['last'].diff()-timedelta(minutes=dt)
             df.loc[df['ineq']==False,'last'] = None
             temp = df[df['last']>=timedelta(minutes=tot_min)]
             for i in range(len(temp)):
                 start = temp.index[i]-temp.iloc[i]['last']
-                stop = temp.index[i]-timedelta(minutes=5)
+                stop = temp.index[i]-timedelta(minutes=dt)
                 arr=df.loc[start:stop,'glucose'].values
                 event[i]={}
                 event[i]['datetime']=start.strftime('%Y-%m-%d %H:%M')
-                event[i]['minutes']=len(arr)*5
+                event[i]['minutes']=len(arr)*dt
                 event[i]['mean'] = arr.mean()
                 event[i]['level'] = cl
                 event[i]['values']=np.round(arr,2)
