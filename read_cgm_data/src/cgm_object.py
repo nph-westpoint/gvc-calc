@@ -1215,10 +1215,10 @@ class CGM(object):
         ax4= self.ax_stats(ax4,**kwargs
                     )  
         
-        stats1 = self.calc_stat('auc',group_by='day').stack().values
+        stats1 = self.calc_stat('auc',group_by='day').values.reshape(-1)
         st.write(stats1)
         stats1[1],stats1[0] = stats1[0],stats1[1]
-        stats2 = self.calc_stat('auc').stack().values
+        stats2 = self.calc_stat('auc').values.reshape(-1)
         stats = np.hstack([stats1,stats2])
 
         ax5 = plt.subplot2grid(fs,(4,0),rowspan=4,colspan=3)
