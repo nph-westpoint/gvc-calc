@@ -639,7 +639,7 @@ class CGM(object):
                 else:
                     cols = [stat_name]
             
-            ans = self.data.groupby(list([group_by])).apply(func,**params,include_groups=False)
+            ans = self.data.groupby(list([group_by])).apply(func,**params)
             idx = list(ans.index)
             data = np.stack(ans.values)
             if idx_name is not None:
@@ -683,7 +683,6 @@ class CGM(object):
                 self.params['type']=type_
                 ans = self.data.groupby(group_by)[columns].apply(self.stats_functions[key]['f'],
                                                 **self.params,
-                                                include_groups=False,
                                                 )
                 idx = list(ans.index)
                 data = np.stack(ans.values)
@@ -697,7 +696,6 @@ class CGM(object):
                 cols = [key]
             ans = self.data.groupby(group_by)[columns].apply(self.stats_functions[key]['f'],
                                                 **self.params,
-                                                include_groups=False,
                                                 )
             idx = list(ans.index)
             data = np.stack(ans.values)
