@@ -1220,9 +1220,11 @@ class CGM(object):
         st.write(stats1[0], stats1[1])
         stats[0] = stats1[1]
         stats[1] = stats1[0]
-        #stats1[1],stats1[0] = stats1[0],stats1[1]
-        stats[2] = self.calc_stat('auc').values.reshape(-1)
-        #stats = np.hstack([stats1,stats2])
+        st.write(stats)
+        new_stat = self.calc_stat('auc').values.reshape(-1)
+        st.write(new_stat)
+        #stats[2] = self.calc_stat('auc').values.reshape(-1)
+        stats = np.hstack([stats,new_stat])
         st.write(stats)
 
         ax5 = plt.subplot2grid(fs,(4,0),rowspan=4,colspan=3)
