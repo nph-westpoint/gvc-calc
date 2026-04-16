@@ -88,7 +88,7 @@ if select == options[0]:
     
     st.markdown(body)
     img_link = "https://images.squarespace-cdn.com/content/v1/5be5c21e75f9ee21b5817cc2/"
-    img_link+="12b0fc67-60fb-45ce-9228-9d64ae11bc17/process_2.png?format=2500w"
+    img_link+="1968a52d-71bc-4de3-bef1-21feeb300964/process_3.png?format=1000w"
     st.image(img_link,
              width = 700,
              caption = "Figure 2: Process for Analyzing Multiple Files.")
