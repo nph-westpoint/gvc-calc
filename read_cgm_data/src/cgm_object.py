@@ -1449,9 +1449,9 @@ class CGM(object):
         ax.set_ylabel(ylabel)
         ax.scatter(X[:,0],X[:,1],s=5)
         ax.plot(ellipsis[0,:],ellipsis[1,:],color='blue')
-        body = f"Major axis = {wider_spread:0.1f}"
+        body = f"Major axis = {wider_spread:.1f}"
         ax.annotate(body,xy=major,fontsize=10,color='blue',weight='bold')
-        body = f"Minor axis = {smaller_spread:0.1f}"
+        body = f"Minor axis = {smaller_spread:.1f}"
         ax.annotate(body,xy=minor,fontsize=10,color='blue',weight='bold')
         return (fig)
     
