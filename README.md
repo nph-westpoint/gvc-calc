@@ -17,4 +17,6 @@ This method uses the ability of a dockerfile to create a virtual machine on your
 <img width="955" height="450" alt="image" src="https://github.com/user-attachments/assets/649f6e05-18f9-4871-ac74-f49663b5b846" />
 <br><br><br>
 
-3) Mac: Use the [![Download](https://img.shields.io/badge/MAC-download-blue)](https://github.com/nph-westpoint/gvc-calc/blob/main/run_options/Run_App.command)
+3) Mac: Download and run: [![Download](https://img.shields.io/badge/MAC-download-blue)](https://github.com/nph-westpoint/gvc-calc/blob/main/run_options/Run_App.command)
+
+<img width="970" height="420" alt="image" src="https://github.com/user-attachments/assets/f607a660-c24a-44db-8131-82b22be6539d" />
