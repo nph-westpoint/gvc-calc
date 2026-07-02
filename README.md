@@ -8,5 +8,6 @@ The first is just using it on Streamlit's Community Cloud environment which is l
 ## Method 2 (Dockerfile)
 This method uses the ability of a dockerfile to create a virtual machine on your own computer with python and all of the necessary packages installed so it can run on any computer. It is a two-step process unless you already have docker.desktop installed on your computer.
 1) You must have [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running on your computer.
-2) Windows:Use the [Download and Run the Batch File](https://github.com/nph-westpoint/gvc-calc/blob/main/run_options/Run_App.bat?inline=false)
+2) Windows:Use the [Download](https://github.com/nph-westpoint/gvc-calc/blob/main/run_options/Run_App.bat?inline=false)
 3) Mac: Use the Run_App.command
+4) [Download](https://shields.io)
