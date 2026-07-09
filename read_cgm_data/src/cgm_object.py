@@ -1426,7 +1426,7 @@ class CGM(object):
         eigenvals, eigenvecs = np.linalg.eig(cov)
         theta = np.linspace(0,2*np.pi, 1000)
         ellipsis = (np.sqrt(eigenvals[None,:])*eigenvecs) @ [np.sin(theta),np.cos(theta)]
-        long_axis,short_axis= 2*np.sqrt(eigenvals)
+        long_axis,short_axis= 2*np.sqrt(eigenvals).real
         wider_spread = max(long_axis,short_axis)
         smaller_spread = min(long_axis,short_axis)
 
