@@ -514,7 +514,7 @@ def eccentricity(x,**kwargs):
     long_axis,short_axis= 2*np.sqrt(eigenvals)
     a = max(long_axis,short_axis)
     b = min(long_axis,short_axis)
-    return np.round(np.array([np.sqrt(1-b**2/a**2),a,b]),5)
+    return np.round(np.array([np.sqrt(1-b**2/a**2),a,b]).real,5)
 
 def transition_matrix(data,intervals,shift_minutes,deltat):
     """
