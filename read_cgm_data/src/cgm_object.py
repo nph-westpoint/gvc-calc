@@ -1198,6 +1198,7 @@ class CGM(object):
                   'footer':"Glucose Variability",
                  }
         if self.units == 'mmol':
+            kwargs['stats']=['Coefficient\nof Variation',"Std Dev\nmmol/L"]
             kwargs['normal']=['<36','0.55-1.44']
         ax3=self.ax_stats(ax3,**kwargs)
         
