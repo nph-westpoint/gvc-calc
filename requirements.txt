@@ -5,29 +5,21 @@
 # $ conda create --name <env> --file <this file>
 # platform: win-64
 
-streamlit==1.50.0
-pandas==2.2.2
-numpy==1.26.4
-scipy==1.13.1
+streamlit>=1.50.0
+pandas>=2.2.2
+numpy>=1.26.4
+scipy>=1.13.1
 pyarrow
-openpyxl==3.1.5
-h5py
 
 # Visualization
-matplotlib==3.8.4
-seaborn==0.13.2
+matplotlib>=3.8.4
+seaborn>=0.13.2
 plotly
 altair
 pydeck
 
 # Machine Learning & Stats
-scikit-learn==1.4.2
+scikit-learn>=1.4.2
 scikit-bio
 statsmodels
-patsy
 
-# Utilities
-requests
-beautifulsoup4
-pillow
-watchdog
