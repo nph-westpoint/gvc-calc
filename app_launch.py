@@ -57,6 +57,18 @@ select = st.sidebar.radio(label = "Select:",options=options)
 if st.session_state['current_file'] is not None:
     st.sidebar.button("Restart Session",on_click=rd.initialize_session)
 if select == options[0]:
+    st.subheader(":red[Privacy Notice]")
+    body = "GVC-Calc processes uploaded CGM files only for the duration of an active session. "
+    body+= "Uploaded files are not intentionally retained, stored in a database, "
+    body+= "or shared with third parties by the application. Users should upload only "
+    body+= "data they are authorized to process and should remove personally identifying "
+    body+="information whenever possible before uploading."
+    st.markdown(body)
+    st.subheader(":red[Security]")
+    body = "Communication between the user's browser and the application is encrypted using "
+    body+= "HTTPS. GVC-Calc performs calculations only on the uploaded dataset and does not "
+    body+= "require user accounts or collect personal information."
+    st.markdown(body)  
     st.subheader("About")
     body = "GVC-Calc was developed to assist researchers with Continuous Glucose Monitoring (CGM) "
     body += "data by West Point's AI Data Engineering and Machine Learning (AIDE-ML) Center. "
