@@ -1161,9 +1161,9 @@ class CGM(object):
         scols = ['tir_<54','tir_54-70','tir_70-180','tir_180-250','tir_>250']
         ax2 = plt.subplot2grid(fs,(0,2),rowspan=4,colspan=4)
         kwargs = {'stats':['Very Low\nBelow 54\nmg/dL',
-                           "Low Alert\nBelow 70\nmg/dL",
+                           "Low Range\nBelow 70\nmg/dL",
                            "In Target\n70-180\nmg/dL",
-                           "High Alert\nAbove 180\nmg/dL",
+                           "High Range\nAbove 180\nmg/dL",
                            "Very High\nAbove 250\nmg/dL",
                           ],
                   'vals':self.stats.T[scols].values[0]*100,
@@ -1177,9 +1177,9 @@ class CGM(object):
                  }
         if self.units == 'mmol':
             kwargs['stats']=['Very Low\nBelow 3\nmmol/L',
-                           "Low Alert\nBelow 3.9\nmmol/L",
+                           "Low Range\nBelow 3.9\nmmol/L",
                            "In Target\n3.9-10\nmmol/L",
-                           "High Alert\nAbove 10\nmmol/L",
+                           "High Range\nAbove 10\nmmol/L",
                            "Very High\nAbove 13.9\nmmol/L",
                           ]
         ax2=self.ax_stats(ax2,**kwargs)
@@ -1197,6 +1197,8 @@ class CGM(object):
                   'font_size':[12,12,10],
                   'footer':"Glucose Variability",
                  }
+        if self.units == 'mmol':
+            kwargs['normal']=['<36','0.55-1.44']
         ax3=self.ax_stats(ax3,**kwargs)
         
         ## Data Sufficiency ##
