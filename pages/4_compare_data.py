@@ -9,7 +9,8 @@ pages_dict = st.session_state['pages_dict']
 
 
 rd.display_page_links(pages_dict)
-
+body="#### Video: [Data/File Structure](https://youtu.be/ErMTuUexOPo)"
+st.sidebar.markdown(body)
 
 options = ["Select Statistics","Correlation","X-Y Plots"]
 select = st.pills("Select a tool:",
