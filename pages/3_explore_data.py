@@ -26,6 +26,8 @@ units = st.sidebar.radio("Units:",
                          options = ['mg/dL','mmol/L'],
                          index=idx,
                          )
+body="#### Video: [Explore & Download Data](https://youtu.be/2e6DHsEmLxk)"
+st.sidebar.markdown(body)
 
 cgm_data.data[name].units = units.split('/')[0]
 options = ["View Data",
