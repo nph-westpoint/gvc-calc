@@ -417,6 +417,17 @@ def adrr(x,**kwargs):
             pass            
     return np.round(np.array([(LR+HR).mean(), LR.mean(), HR.mean()]),5)
 
+def adrr(x,**kwargs):
+    data = x.copy()
+    type_ = kwargs['type']
+    if type_ == 'paper':
+        col = 'date'
+    if type_ == 'rGV':
+        col = 'day_elapsed'
+    LR = data[['rl',col]].groupby(col).max().values.mean()
+    HR = data[['rh',col]].groupby(col).max().values.mean()
+    return np.round(np.array([LR+HR,LR,HR]),5)
+
 def m_value(x,**kwargs):
     """
     m_value - calculates the M-value for a glucose 
