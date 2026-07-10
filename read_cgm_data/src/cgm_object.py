@@ -252,6 +252,8 @@ class CGM(object):
         data['date']=data.index.map(lambda x: x.date())
         data['time']=data.index.map(lambda x: x.time())
         data['all']=1
+        data['elapsed']=data.index.map(lambda x: (x-data.index[0])//pd.Timedelta(minutes=1))
+        data['day_elapsed']=np.ceil(data['elapsed']/(24*60)+0.005)
         #data['stats_use']=1
         ## normalize data ##
         if self.units == 'mg':
