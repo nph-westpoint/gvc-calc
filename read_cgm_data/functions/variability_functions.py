@@ -375,7 +375,8 @@ def mean_of_daily_differences(x,**kwargs):
         if type_ == 'paper':
             return (abs(delta)).sum()/len(delta)
         if type_ == 'rGV':
-            delta = delta[delta != delta.max()]
+            delta = delta.iloc[:-1]
+            #delta = delta[delta != delta.max()]
             return (abs(delta)).sum()/(len(delta))
     else:
         return np.nan
