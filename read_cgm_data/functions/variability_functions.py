@@ -401,11 +401,20 @@ def adrr(x,**kwargs):
         num_days = max(len(data)//daily,1)
         LR = np.zeros(num_days)
         HR = np.zeros(num_days)
-        data = data.iloc[:daily*num_days].copy()
+        #data = data.iloc[:daily*num_days].copy()
         for i in range(num_days):
             day_data = data[i*daily:(i+1)*daily]
             LR[i]=day_data['rl'].max()
             HR[i]=day_data['rh'].max()
+        try:
+            day_data = data.iloc[(i+1)*daily:]
+            if len(day_data)>0:
+                lr = day_data['rl'].max()
+                hr = day_data['rh'].max()
+                LR = np.append(LR,lr)
+                HR = np.append(HR,hr)
+        except:
+            pass            
     return np.round(np.array([(LR+HR).mean(), LR.mean(), HR.mean()]),5)
 
 def m_value(x,**kwargs):
