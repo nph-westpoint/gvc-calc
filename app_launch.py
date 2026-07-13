@@ -71,10 +71,10 @@ if select == options[0]:
     body+= "require user accounts or collect personal information."
     st.markdown(body)
     st.subheader(":red[Local Execution (Maximum Privacy)]")
-    body = "Users who prefer not to upload data to the Streamlit-hosted application may" 
-    body+= "instead run GVC-Calc locally on their own computer using the Docker version"
+    body = "Users who prefer not to upload data to the Streamlit-hosted application may " 
+    body+= "instead run GVC-Calc locally on their own computer using the Docker version "
     body+= "available from the GitHub repository: [GVC-Calc Github](https://github.com/nph-westpoint/gvc-calc)."
-    body+= "When run locally, all data processing and calculations occur entirely on the"
+    body+= "When run locally, all data processing and calculations occur entirely on the "
     body+= "user's computer. In this setting, CGM data are not transmitted to external servers."
     st.markdown(body)
     st.subheader("About")
