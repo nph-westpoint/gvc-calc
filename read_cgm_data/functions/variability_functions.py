@@ -27,7 +27,7 @@ def glucose_N(x,**kwargs):
 
 def total_time(x,**kwargs):
     dt = timedelta(minutes = kwargs['deltat'])
-    return dt*len(x)
+    return dt*(len(x)-1)
 
 def total_days(x,**kwargs):
     """
