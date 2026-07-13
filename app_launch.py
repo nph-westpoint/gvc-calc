@@ -70,7 +70,7 @@ if select == options[0]:
     body+= "HTTPS. GVC-Calc performs calculations only on the uploaded dataset and does not "
     body+= "require user accounts or collect personal information."
     st.markdown(body)
-    st.subheader(":red["Local Execution (Maximum Privacy)]")
+    st.subheader(":red[Local Execution (Maximum Privacy)]")
     body = "Users who prefer not to upload data to the Streamlit-hosted application may" 
     body+= "instead run GVC-Calc locally on their own computer using the Docker version"
     body+= "available from the GitHub repository: [GVC-Calc Github](https://github.com/nph-westpoint/gvc-calc/tree/main)."
