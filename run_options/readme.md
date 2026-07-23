@@ -9,7 +9,7 @@
 1) Download the file: "Run_App.command".
 2) Open a Terminal
 3) Navigate to the folder that the file was saved.
-4) Execute the following: chmod +x Run_App.command
+4) Execute the following by typing in the terminal: chmod +x Run_App.command
 
 ### Mac users - subsequent times (Run_App.command is already executable)
 5) Open Docker Desktop (Download and Install if you do not have it on your computer already).
