@@ -3,7 +3,7 @@
 
 1) Download either Run_App.bat (Windows).
 2) Open Docker Desktop (Download and Install if you do not have it on your computer already).
-3) Double click Run_App.bat or Run_App.command from your downloads folder.
+3) Double click Run_App.bat `downloads` folder or the folder you saved it in.
 
 ### Mac users first time - make the .command executable by doing the following once:
 1) Download the file: "Run_App.command".
